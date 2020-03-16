@@ -74,11 +74,11 @@ variables_should_contain_whitespace = Standard(dict(
            "hostvars", "groupvars", "template"]
 ))
 
-commands_should_be_idempotent = Standard(dict(
-    name="Commands should be idempotent",
-    check=lintcheck('ANSIBLE0012'),
-    types=["playbook", "task"]
-))
+#commands_should_be_idempotent = Standard(dict(
+#    name="Commands should be idempotent",
+#    check=lintcheck('ANSIBLE0012'),
+#    types=["playbook", "task"]
+#))
 
 commands_should_not_be_used_in_place_of_modules = Standard(dict(
     name="Commands should not be used in place of modules",
@@ -176,7 +176,7 @@ roles_scm_not_in_src = Standard(dict(
 files_should_not_be_purposeless = Standard(dict(
     name="Files should contain useful content",
     check=files_should_have_actual_content,
-    types=["playbook", "task", "handler", "rolevars", "defaults", "meta"]
+    types=["playbook", "task", "handler", "defaults", "meta"]
 ))
 
 playbooks_should_not_contain_logic = Standard(dict(
@@ -245,11 +245,11 @@ most_files_shouldnt_have_tabs = Standard(dict(
            "file"]
 ))
 
-dont_delegate_to_localhost = Standard(dict(
-    check=lintcheck('EXTRA0004'),
-    name="Use connection: local rather than delegate_to: localhost",
-    types=["playbook", "task", "handler"]
-))
+#dont_delegate_to_localhost = Standard(dict(
+#    check=lintcheck('EXTRA0004'),
+#    name="Use connection: local rather than delegate_to: localhost",
+#    types=["playbook", "task", "handler"]
+#))
 
 become_user_should_have_become = Standard(dict(
     check=lintcheck('ANSIBLE0017'),
@@ -283,13 +283,13 @@ ansible_lint_min_version = '3.4.0'
 
 standards = [
     rolesfile_should_be_in_yaml,
-    role_must_contain_meta_main,
+    #role_must_contain_meta_main,  # This just checks for use of role dependencies.
     role_meta_main_must_contain_info,
     become_rather_than_sudo,
     variables_should_contain_whitespace,
-    commands_should_be_idempotent,
+    #commands_should_be_idempotent,
     commands_should_not_be_used_in_place_of_modules,
-    package_installs_should_not_use_latest,
+    #package_installs_should_not_use_latest,
     files_should_be_indented,
     use_shell_only_when_necessary,
     inventory_must_parse,
@@ -299,7 +299,7 @@ standards = [
     tasks_are_uniquely_named,
     vars_are_not_repeated_in_same_file,
     no_command_line_environment_variables,
-    no_lineinfile,
+    #no_lineinfile,
     use_yaml_rather_than_key_value,
     roles_scm_not_in_src,
     files_should_not_be_purposeless,
@@ -311,11 +311,11 @@ standards = [
     inventory_hostsfile_has_group_vars,
     test_matching_groupvar,
     hosts_should_not_be_localhost,
-    dont_delegate_to_localhost,
+    #dont_delegate_to_localhost,
     most_files_shouldnt_have_tabs,
-    use_handlers_rather_than_when_changed,
+    #use_handlers_rather_than_when_changed,
     become_user_should_have_become,
     dont_compare_to_empty_string,
-    dont_compare_to_literal_bool,
+    #dont_compare_to_literal_bool,
     latest_version,
 ]
